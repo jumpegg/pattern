@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 배열 리터럴
+		// 자바스크립트 배열 역시 리터럴방식이 생성자 방식보다 이점이 더 많다.
+		
+		// 배열 리터럴 문법
+		var arr_01 = [1, 2, 3]; // 별달리 특별할 게 없다.
+
+		// 배열 생성자를 피해야 하는 이유
+		// 생성자 생성시 인자값들의 동작 방식 여부가 명확치 않음
+
+		var arr_02 = [3];
+		var arr_03 = new Array("test1", "test2", "test3");
+		var arr_04 = new Array(3);
+
+		console.log(arr_02);
+		console.log(arr_03);
+		console.log(arr_04);
+		
+		// 배열에 typeof 를 사용하면 object 가 반환된다
+		console.log(typeof [1,2,3]);
+
+		// JSON 리터럴
+		// JSON 리터럴에는 특별한 것이 없다. 
+		// JSON 과 객체와의 차이점은 프로퍼티 명을 따옴표로 감싸야 한다는점이다.
+		// 객체 리터럴은 프로퍼티 명이 식별자(변수명)로 유효하지 않을 경우에만 따옴표가 필요하다.
+		// 예로 {"first my app" : "text share"} 이처럼 식별자에는 공백이 들어갈 수 없으므로 이런 경우에 사용한다.
+
+		// 정규 표현식 리터럴
+		var re = /\\/gm;
+		// 정규 표현식 생성자
+		var re2 = new RegExp("\\\\", "gm");
+	</script>
+</body>
+</html>

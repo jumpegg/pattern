@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 단일 var 패턴
+		// 장점
+		// 함수에서 필요로 하는 모든 지역 변수를 한군데서 찾을 수 있다.
+		// 변수를 선언하기 전에 사용할 때 발생하는 로직상의 오류를 막아준다.
+		// 변수를 먼저 선언한 후에 사용해야 한다는 사실을 상기시키기 때문에 전역변수를 최소화 하는데 도움이 된다.
+		// 코드량이 줄어든다. (작성량, 전송량 모두 줄어든다)
+		function test(){
+			var a=1,
+					b=2,
+					sum = a + b,
+					myObject = {},
+					i, j;
+					// 함수 본문
+		}
+
+		// 호이스팅
+		// 함수 내에서 여기저기에서 var 선언을 할 수 있지만 
+		// 실제로는 모두 함수 상단에 변수가 선언된 것과 동일하게 작동한다.
+		// 이러한 동작 방식을 끌어올리기(호이스팅) 이라고 한다.
+		// 호이스팅 방식 때문에 로직상의 오류가 생기기도 한다.
+
+		myname = "global";
+		// function func(){
+		// 	alert(myname);
+		// }
+
+		// function func(){
+		// 	alert(myname);
+		// 	var myname = "local";
+		// 	alert(myname);
+		// }
+
+		function func(){
+			var myname;
+			alert(myname);
+			var myname = "local";
+			alert(myname);
+		}
+
+		func();
+	</script>
+</body>
+</html>

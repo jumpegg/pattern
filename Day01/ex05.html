@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// for in 루프
+		// for in 루프는 배열이 아닌 객체를 순환할 때만 사용해야 한다.
+		// for in 으로 루프를 도는 것을 열거(enumeration)이라고도 한다.
+		// 객체의 프로퍼티를 순회할 때는 프로토타입 체인을 따라 상속되는 프로퍼티들을 걸러내기 위해
+		// hasWonProperty()메서드를 사용해야 한다.
+
+		var man = {
+			hands: 2,
+			legs: 2,
+			heads: 1
+		};
+
+		// 코드 어딘가에서 모든 객체에 메서드가 하나 추가된다.
+		if( typeof Object.prototype.clone === "undefined"){
+			Object.prototype.clone = function() {};
+		}
+
+		for (var i in man){
+			console.log(i);
+		}
+
+		for(var i in man){
+			if (man.hasOwnProperty(i)){
+				console.log(i, ":", man[i]);
+			}
+		}
+
+		// 내장 생성자 프로토타입 확장하기/ 확장하지 않기
+		// 내장 생성자 함수의 프로토 타입을 확장하는 것은 기능을 추가하는 좋은 방법이지만
+		// 때로는 지나치게 강력할 수 있다.
+
+		// 따라서 내장 생성자의 프로토타입을 확장하려는 경우 다음을 고려해보기 바란다.
+		
+	</script>
+</body>
+</html>

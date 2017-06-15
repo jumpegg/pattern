@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 전역변수 최소화
+	myglobal = "hello";
+	console.log(myglobal);
+	console.log(window.myglobal);
+	console.log(this.myglobal);
+	// 전역변수의 문제점
+	// 전역변수는 자바스크립트 어플리케이션이나 웹페이지 내 모든 코드에서 공유되기 때문에
+	// 동일한 이름의 변수에 덮어 씌워질 수 있다.
+
+	// 예)
+	// 외부 라이브러리와 중복되는 변수명 사용
+	// 광고, 제휴업체의 스크립트
+	// 사용자를 추적하고 분석하는 서드파티 스크립트 코드
+	// 다양한 위젯, 배지, 버튼
+
+	// 자바스크립트는 언어 특성상 전역변수를 생성하는 것이 쉽기 때문에
+	// 조심해야 한다.
+	
+</script>
+</html>
