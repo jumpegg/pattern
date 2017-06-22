@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Chain(){
+			this.a = 0;
+			this.b = 0;
+			this.c = 0;
+			
+			this.setA = function(){
+				this.a = Math.random();
+				return this;
+			}
+			this.setB = function(){
+				this.b = Math.random();
+				return this;
+			}
+			this.setC = function(){
+				this.c = Math.random();
+				return this;
+			}
+			this.myToString = function(){
+				console.log(this.a);
+				console.log(this.b);
+				console.log(this.c);
+			}
+		}
+
+		var test = new Chain();
+
+		// test.setA();
+		// test.setB();
+		// test.setC();
+
+		test.setA().setB().setC().setA();
+	</script>
+</body>
+</html>

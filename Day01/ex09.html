@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 함수 선언문보다 함수 표현식을 선호하는 이유는, 함수 표현식을 사용하면 함수가
+	// 다른 객체들과 마찬가지로 객체의 일종이며 어떤 특별한 언어 구성요소가 아니라는
+	// 사실이 좀더 드러나기 때문이다.
+
+	// 함수 호이스팅
+	function foo(){
+		alert('global foo');
+	}
+
+	function bar(){
+		alert('global bar');
+	}
+
+	function hoistMe(){
+		console.log( typeof foo );
+		console.log( typeof bar );
+
+		foo();
+		bar();
+
+		function foo(){
+			alert('local foo');
+		}
+
+		var bar = function() {
+			alert('local bar');
+		}
+	}
+	hoistMe();
+	// hoistMe() 함수 내에서 foo bar 를 정의하면, 실제 변수를 정의한 위치와 상관없이 
+	// 끌어올려져 전역 변수인 foo 와 bar 를 덮어쓰게 된다.
+	// 그런데 지역변수 foo 는 나중에 정의되어도 상단으로 호이스팅 되어 정상작동 하는 반면,
+	// bar()의 정의는 호이스팅 되지 않고 선언문만 호이스팅된다.
+</script>
+</html>

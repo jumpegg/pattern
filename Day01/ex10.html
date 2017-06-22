@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 콜백 패턴
+	var findNodes = function(){
+		var i = 10000,
+				nodes = [],
+				found;
+		while (i) {
+			i -= 1;
+			nodes.push(found);
+		}
+		return nodes;
+	}
+
+	var hide = function(nodes){
+		var i = 0, max = nodes.length;
+		for(; i < max; i += 1){
+			nodes[i].style.display = "none";
+		}
+	};
+
+	hide(findNodes());
+
+	// 콜백으로 개선되어진 함수
+	var findNodes = function(callback){
+		var i=10000, nodes=[], found;
+		if(typeof callback !== "function"){
+			callback = false;
+		}
+		while(i){
+			i -= 1;
+			if(callback){
+				callback(found);
+			}
+
+			nodes.push(found);
+		}
+		return nodes;
+	}
+
+	var hide = function(node){
+		node.style.display = "none";
+	}
+
+	findNodes(hide);
+
+	// 콜백의 유효범위
+	var myapp = {};
+	myapp.color = "green";
+	myapp.paint = function(node){
+		node.style.color = this.color;
+	};
+
+	findNodes(myapp.paint, myapp);
+
+	// findNodes(myapp.paint) 를 호출하면 this.color 가 정의되지 않아 예상대로 동작하지 않는다
+	// findNodes() 가 전역함수이기 때문에 객체 this는 전역 객체를 참조한다. 
+	// 이를 해결하기 위해서는 콜백함수와 함께 콜백이 속해 있는 객체를 전달하면 된다.
+
+	findNodes(myapp.paint, myapp);
+
+	var findNodes = function(callback, callback_obj){
+		if(typeof callback === "function"){
+			callback.call(callback_obj, found);
+		}
+
+		if(typeof callback === "string"){
+			callback.call(callback_obj, found);
+		}
+	};
+</script>
+</html>

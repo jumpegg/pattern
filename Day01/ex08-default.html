@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 자바스크립트 함수의 특징
+	// 1. 런타임, 즉 프로그램 실행 중에 동적으로 생성할 수 있다.
+	// 2. 변수에 할당할 수 있고, 다른 변수에 참조를 복사할 수 있으며, 확장 가능하고, 
+	//    몇몇 특별한 경우를 제외하면 삭제할 수 있다.
+	// 3. 다른 함수의 인자로 전달할 수 있고, 다른 함수의 반환 값이 될 수 있다.
+	// 4. 자기 자신의 프로퍼티와 메서드를 가질 수 있다.
+
+	// 따라서, 다음과 같은 상황이 가능한데, 함수A가 객체로써 프로퍼티와 메서드를 가질수 있다.
+	// 함수B 는 함수C를 인자값으로 받고 D를 반환할 수 있다.
+
+	// 함수 표현식
+	// 기명 함수 표현식
+	var add = function add(a,b){
+		return a + b;
+	}
+
+	// 무명 함수 표현식, 익명함수
+	var addd = function (a, b){
+		return a + b;
+	}
+
+	// 함수 선언문
+	function foo(){
+		//......
+	}
+
+	// 선언문 vs 표현식
+	callMe(function(){
+		// 이 함수는 무명 함수 표현식이다.
+	})
+
+	callMee(function me(){
+		// 이 함수는 me 라는 기명 함수 표현식이다.
+	})
+
+	var myobject = {
+		say : function(){
+			// 이 함수는 함수 표현식이다.
+		}
+	}
+
+	// 함수 선언문은 전역 유효범위나 다른 함수의 본문 내부, 즉 '프로그램 코드'에서만 쓸 수 있다.
+	// 변수나 프로퍼티에 할당할 수 없고, 함수 호출시 인자로 함수를 넘길 때도 사용할 수 없다.
+
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>로또번호 생성</title>
+</head>
+
+<body>
+    <button type="button" onclick="getNum()">Lotto번호 생성하기</button>
+    <ul>
+        <li id="num1"></li>
+        <li id="num2"></li>
+        <li id="num3"></li>
+        <li id="num4"></li>
+        <li id="num5"></li>
+        <li id="num6"></li>
+    </ul>
+</body>
+<script>
+    function getNum() {
+        var arry = [];
+        for (var i = 1; i < 7; i++) {
+            var num = Math.floor(Math.random() * 45) + 1;
+            arry.push(num);
+            document.getElementById("num" + i).innerHTML = arry[i-1];
+        }
+    }
+</script>
+
+</html>
