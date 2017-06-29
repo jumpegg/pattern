@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// -- 초기화 시점의 분기 패턴
+		// 초기화 시점의 분기는 최적화 패턴이다.
+		// 어떤 조건이 프로그램의 생명주기 동안 변경되지 않는 게 확실할 경우 
+		// 조건을 단 한번만 확인하는 것이 바람직 하다.
+		var utils1 = {
+			addListener : function (el, type, fn){
+				if (typeof window.addEventListener === 'function'){
+					el.addEventListener(type, fn, false);
+				}else if(typeof document.attachEvent === 'function'){
+					el.attachEvent('on' + type, fn);
+				}else { // 구형 브라우저
+					el['on' + type] = fn;
+				}
+			},
+			removeListener: function (el, type, fn){
+				// 거의 동일한 코드
+			}
+		}
+
+		var utils2 = {
+			addListener: null,
+			removeListener: null
+		};
+
+		if(typeof window.addEventListener === 'function'){
+			utils.addListener = function(el, type, fn){
+				el.addEventListener(type, fn, false);
+			};
+			utils.removeListener = function(el, type, fn){
+				el.removeListener(type, fn, false);
+			};
+		}else if(typeof document.attachEvent === 'function'){ // IE
+			utils.addListener = function (el, type, fn){
+				el.attachEvent('on' + type, fn);
+			};
+			utils.removeListener = function (el, type, fn){
+				el.detachEvent('on' + type, fn);
+			};
+		}else {
+			utils.addListener = function (el, type, fn){
+				el['on' + type] = fn;
+			};
+			utils.removeListener = function (el, type, fn){
+				el['on' + type] = null;
+			};
+		}
+
+		//  해당 함수들의 
+	</script>
+</body>
+</html>
