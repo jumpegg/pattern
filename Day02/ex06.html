@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// ** 함수적용
+		// 순수한 함수형 프로그래밍 언어에서, 함수는 불려지거나 호출된다고 표현하기 보다
+		// 적용(apply)된다고 표현한다. 자바스크립트에서도 Function.prototype.apply()를 사용하면 함수를 적용할 수 있다.
+
+		var sayHi = function (who){
+			return "Hello" + (who ? ", " + who : "") + "!";
+		};
+
+		sayHi(); // "Hello"
+		sayHi('world'); // " Hello, world"
+
+		// 함수를 적용(apply)한다
+		sayHi.apply(null, ["hello"]); // "Hello, hello"
+
+		// 함수를 적용하는 것과 호출하는 것 모두 결과는 동일하다.
+		// apply() 는 두개의 매개변수를 받는다. 
+		// 첫번째는 이 함수 내에 this 와 바인딩할 객체이고
+		// 두번째는 배열 또는 인자로 함수 내부에서 배열과 비슷한 형태의 arguments 객체로 사용하게 된다.
+		// 첫번째 매개변수가 null 이면 this는 전역객체를 가리킨다.
+
+		// 함수가 객체의 메서드 일때는 객체를 전달해줘야 한다
+
+		var alien = {
+			sayHi: function (who){
+				return "Hello" + (who ? ", " + who : "") + "!";
+			}
+		};
+
+		alien.sayHi('world');
+		sayHi.apply(alien, ["humans"]);
+
+		// call() 은 apply() 와 비슷한것으로 함수의 매개변수가 하나일 경우 사용한다.
+
+		sayHi.apply(alien, ["humans"]);
+		sayHi.call(alien, "humans");
+
+		// ** 부분적인 적용
+
+		// 함수의 호출이 실제로는 인자의 묶음에 적용하는 것임을 알게 되었다.
+		// 함수에 여러가지 인자가있을 경우 부분적으로 인자를 적용시킬 수 있을까?
+		// 예를들면 이런 상황이다.
+
+		function add(x,y){
+			return x+y;
+		}
+
+		add(5,4);
+
+		// 1단계 -- 하나의 인자를 적용시킨다
+		function add (5, y){
+			return 5 + y;
+		}
+
+		// 2단계 -- 나머지 인자를 적용시킨다
+		function add (5, 4){
+			return 5 + 4;
+		}
+
+		// 이제 이런 작업이 가능하도록 임의의 partialApply() 메서드를 만들어 보자
+
+		var addp = function (x, y){
+			return x + y;
+		};
+
+		addp.apply(null, [5,4]); // 9
+		// 인자를 부분적으로 적용시킨다.
+		var newadd = addp.partialApply(null, [5]);
+		newadd.apply(null, [4]); // 9
+
+		// 이렇게 함수가 부분적인 적용을 이해하고 처리할 수 있도록 만드는 과정을 커링이라고 한다.
+
+	</script>
+</body>
+</html>
